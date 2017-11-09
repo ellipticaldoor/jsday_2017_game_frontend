@@ -12,11 +12,15 @@
   },
   "dependencies": {
     "eslint-plugin-vue": "^2.1.0",
+    "feathers": "^2.2.3",
+    "feathers-hooks": "^2.1.2",
+    "feathers-socketio": "^2.0.1",
     "feathers-vuex": "^1.0.4",
     "node-sass": "^4.6.0",
     "sass-loader": "^6.0.6",
     "vue": "^2.5.2",
-    "vue-router": "^3.0.1"
+    "vue-router": "^3.0.1",
+    "vuex": "^3.0.1"
   },
   "devDependencies": {
     "autoprefixer": "^7.1.2",
