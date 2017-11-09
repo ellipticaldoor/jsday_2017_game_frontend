@@ -3,7 +3,7 @@ import Vuex from 'vuex'
 import feathersVuex from 'feathers-vuex'
 import feathersClient from './feathers'
 
-const { service } = feathersVuex(feathersClient, { idField: '_id' })
+const { service } = feathersVuex(feathersClient, { idField: 'id' })
 
 Vue.use(Vuex)
 
