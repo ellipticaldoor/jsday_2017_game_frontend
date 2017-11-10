@@ -10,6 +10,7 @@
 		</div>
 
 		<button @click='reset()'>reset</button>
+		<div id='time'>{{ seconds }} seconds</div>
 	</div>
 </template>
 
@@ -18,6 +19,12 @@ import { mapActions, mapGetters } from 'vuex'
 
 export default {
 	name: 'admin',
+
+	data() {
+		return {
+			seconds: 0,
+		}
+	},
 
 	computed: {
 		...mapGetters('votes', { findVotesInStore: 'find' }),
@@ -46,13 +53,18 @@ export default {
 	methods: {
 		...mapActions('votes', { findVotes: 'find', removeVotes: 'remove' }),
 
-		reset() {
-			this.removeVotes()
+		async reset() {
+			await this.removeVotes()
+			this.seconds = 20
 		},
 	},
 
 	created() {
 		this.findVotes()
+
+		setInterval(() => {
+			if (this.seconds > 0) this.seconds -= 1
+		}, 1000)
 	},
 }
 </script>
@@ -60,7 +72,7 @@ export default {
 <style lang='sass' scoped>
 
 #admin
-	height: 90vh
+	height: 80vh
 
 .vote
 	height: 30px
@@ -84,5 +96,8 @@ button
 	margin: 1rem
 	background: gray
 	border: 0
+
+#time
+	font-size: 300%
 
 </style>
