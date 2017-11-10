@@ -7,14 +7,14 @@
 		</div>
 
 		<div v-else>
-			<button :class='color'>vote</button>
+			<button :class='color' @click='vote()'>vote</button>
 		</div>
 
 	</div>
 </template>
 
 <script>
-// import { mapActions } from 'vuex'
+import { mapActions } from 'vuex'
 
 export default {
 	name: 'vote',
@@ -27,9 +27,15 @@ export default {
 	},
 
 	methods: {
+		...mapActions('votes', { createVote: 'create' }),
+
 		choose(color) {
 			this.color = color
 			this.status = 'vote'
+		},
+
+		vote() {
+			this.createVote({ color: this.color })
 		},
 	},
 }
